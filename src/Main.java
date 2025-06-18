@@ -1,15 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Person[] people =  new Person[4];
+
+        people[0] = new Student("Davit", 1, "CS");
+        people[1] = new Student("Elen", 2, "DS");
+        people[2] = new Professor("Aram", 3, "Math", 5000);
+        people[3] = new AdminStaff("Karen", 4, "Librarian", 3500);
+
+        for( Person p : people){
+            p.printDetails();
+            if(p instanceof Payable){
+                Payable staff = (Payable) p;
+                System.out.println("Calculated Salary: " + staff.calculateSalary());
+            }
+
+            System.out.println("-----");
         }
+
+        System.out.println("Total people: " + Person.getTotalPeople());
+
     }
 }
